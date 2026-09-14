@@ -5,11 +5,10 @@
 
 Everything below is the checklist. Do not skip phases; do not improvise the template. Where this file says *verbatim*, copy the string exactly.
 
-Folder layout of this skill (`$SKILL` = this folder):
+Folder layout (`$SKILL` = this `nu-term-paper-system/` folder at the root of the onylogy-claude repo; the Claude Code entry point is `skills/nu-term-paper/SKILL.md`):
 
 ```
-nu-term-paper/
-├── SKILL.md                       ← Claude Code entry point
+nu-term-paper-system/
 ├── term-paper-write.md            ← this playbook
 ├── skeleton/                      ← copy these to start a new paper (front.js + paper-part1..4.txt with {{slots}})
 ├── tooling/                       ← build.js, pagemap.js, render.sh, verification.js, SiyamRupali.ttf, package.json
