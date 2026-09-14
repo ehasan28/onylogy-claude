@@ -12,12 +12,14 @@ Claude Code skills and systems by Onylogy.
 | Skill | What it does |
 |---|---|
 | [`onywrites`](skills/onywrites/SKILL.md) | Writes blog posts, or rewrites existing ones, so they read as human-authored rather than AI-generated. Built on the structural findings of [StoryScope](https://arxiv.org/abs/2604.03136) (Russell et al., COLM 2026) rather than surface wordlists, which the same paper shows barely affect detection. |
+| [`onylogy-blog`](skills/onylogy-blog/SKILL.md) | Writes, researches, illustrates, uploads and (on approval) schedules an onylogy.com blog post from a title, in the site's canon voice, gated by a lintable voice spec and a sourced Rank Math / Yoast / Google SEO+GEO checklist. Thin wrapper over `onylogy-blog-system/`. |
 | [`nu-term-paper`](skills/nu-term-paper/SKILL.md) | Writes a complete National University of Bangladesh (জাতীয় বিশ্ববিদ্যালয়) Bangla sociology term paper from a title, in the exact NU format (front matter, five chapters ১.১–৫.৩, footnotes, গ্রন্থপঞ্জি), with verified sources and a Word/PDF/Bijoy build. Thin wrapper over the `nu-term-paper-system/` system below. |
 
 ## Systems
 
 | System | Contents |
 |---|---|
+| [`onylogy-blog-system/`](onylogy-blog-system/) | `blog-write-publish.md` (the playbook: definition of done, drift audit, phases 0 to 9, repair mode, guard rails), `references/` (voice v2 with canon-derived numbers, SEO+GEO checklist with sources, post types, template, site facts, first-hand facts bank, thumbnail spec, the six canon posts), `tooling/` (voice/SEO gate, thumbnail generator, screenshot capture, markdown → Gutenberg blocks, media ID reader, draft creator, post verifier). |
 | [`nu-term-paper-system/`](nu-term-paper-system/) | `term-paper-write.md` (the full playbook: intake, research protocol, 100 % structure spec, voice, build & QA, delivery, Google Docs), `skeleton/` (manuscript with every fixed template string), `tooling/` (docx builder with footnotes, TOC page map, Bijoy/SutonnyMJ conversion, verification sheet), `references/`. |
 
 ## Installing
@@ -26,13 +28,14 @@ Claude Code skills and systems by Onylogy.
 git clone https://github.com/ehasan28/onylogy-claude.git
 cp -R onylogy-claude/skills/onywrites ~/.claude/skills/onywrites
 cp -R onylogy-claude/skills/nu-term-paper ~/.claude/skills/nu-term-paper
+cp -R onylogy-claude/skills/onylogy-blog ~/.claude/skills/onylogy-blog
 ```
 
 Restart Claude Code, or start a new session, and the skills are available. They trigger
 automatically when a request matches their description, or invoke them directly with
-`/onywrites` or `/nu-term-paper`.
+`/onywrites`, `/nu-term-paper` or `/onylogy-blog`.
 
-`nu-term-paper` needs the system folder too: keep the cloned repository (or at least
+`nu-term-paper` and `onylogy-blog` need their system folders too: keep the cloned repository (or at least
 `nu-term-paper-system/`) somewhere permanent and set the path at the top of its `SKILL.md` —
 or simply install the system folder itself as the skill:
 

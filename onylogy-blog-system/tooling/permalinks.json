@@ -1,0 +1,248 @@
+{
+ "6-must-have-wordpress-plugins": {
+  "date": "2025-12-29",
+  "id": 959,
+  "path": "/wp-plugins/6-must-have-wordpress-plugins/",
+  "status": "publish"
+ },
+ "build-homepage-kadence-blocks": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/build-homepage-kadence-blocks/",
+  "status": "local-draft"
+ },
+ "common-kadence-blocks-mistakes": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/common-kadence-blocks-mistakes/",
+  "status": "local-draft"
+ },
+ "common-wordpress-mistakes-beginners-make": {
+  "date": "2026-02-26",
+  "id": 1539,
+  "path": "/wordpress/common-wordpress-mistakes-beginners-make/",
+  "status": "publish"
+ },
+ "elementor-vs-gutenberg": {
+  "date": "2026-09-13",
+  "id": 2004,
+  "path": "/wordpress/elementor-vs-gutenberg/",
+  "status": "publish"
+ },
+ "how-to-back-up-wordpress-site": {
+  "date": "2026-09-13",
+  "id": 2001,
+  "path": "/wordpress/how-to-back-up-wordpress-site/",
+  "status": "publish"
+ },
+ "how-to-choose-a-domain-name": {
+  "date": "2026-09-13",
+  "id": 2002,
+  "path": "/domain/how-to-choose-a-domain-name/",
+  "status": "publish"
+ },
+ "how-to-install-wordpress": {
+  "date": "2026-07-22",
+  "id": 1623,
+  "path": "/wordpress/how-to-install-wordpress/",
+  "status": "publish"
+ },
+ "how-to-secure-wordpress-site": {
+  "date": "2026-08-23",
+  "id": 1633,
+  "path": "/wordpress/how-to-secure-wordpress-site/",
+  "status": "publish"
+ },
+ "how-to-set-up-litespeed-cache": {
+  "date": "2026-08-16",
+  "id": 1801,
+  "path": "/wp-plugins/how-to-set-up-litespeed-cache/",
+  "status": "publish"
+ },
+ "how-to-speed-up-wordpress-site": {
+  "date": "2026-09-13",
+  "id": 2000,
+  "path": "/wordpress/how-to-speed-up-wordpress-site/",
+  "status": "publish"
+ },
+ "how-to-write-first-post-page-wordpress": {
+  "date": "2026-08-09",
+  "id": 1630,
+  "path": "/wordpress/how-to-write-first-post-page-wordpress/",
+  "status": "publish"
+ },
+ "kadence-accordion-tabs-blocks": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-accordion-tabs-blocks/",
+  "status": "local-draft"
+ },
+ "kadence-advanced-form-block": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-advanced-form-block/",
+  "status": "local-draft"
+ },
+ "kadence-advanced-gallery-block": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-advanced-gallery-block/",
+  "status": "local-draft"
+ },
+ "kadence-advanced-text-block": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-advanced-text-block/",
+  "status": "local-draft"
+ },
+ "kadence-blocks-free-vs-pro": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-blocks-free-vs-pro/",
+  "status": "local-draft"
+ },
+ "kadence-blocks-guide": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-blocks-guide/",
+  "status": "local-draft"
+ },
+ "kadence-blocks-settings": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-blocks-settings/",
+  "status": "local-draft"
+ },
+ "kadence-blocks-vs-elementor": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-blocks-vs-elementor/",
+  "status": "local-draft"
+ },
+ "kadence-global-palette-typography": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-global-palette-typography/",
+  "status": "local-draft"
+ },
+ "kadence-info-box-block": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-info-box-block/",
+  "status": "local-draft"
+ },
+ "kadence-row-layout-block": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-row-layout-block/",
+  "status": "local-draft"
+ },
+ "kadence-testimonials-block": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-testimonials-block/",
+  "status": "local-draft"
+ },
+ "kadence-vs-spectra-vs-stackable": {
+  "date": null,
+  "id": null,
+  "path": "/wp-plugins/kadence-vs-spectra-vs-stackable/",
+  "status": "local-draft"
+ },
+ "litespeed-cache-advanced-configuration-guide": {
+  "date": "2026-08-30",
+  "id": 1803,
+  "path": "/wp-plugins/litespeed-cache-advanced-configuration-guide/",
+  "status": "publish"
+ },
+ "top-6-domain-registration-websites": {
+  "date": "2026-09-13",
+  "id": 1997,
+  "path": "/domain/top-6-domain-registration-websites/",
+  "status": "publish"
+ },
+ "top-6-wordpress-backup-plugins": {
+  "date": "2026-09-06",
+  "id": 1840,
+  "path": "/wp-plugins/top-6-wordpress-backup-plugins/",
+  "status": "publish"
+ },
+ "top-6-wordpress-caching-speed-plugins": {
+  "date": "2026-09-13",
+  "id": 1843,
+  "path": "/wp-plugins/top-6-wordpress-caching-speed-plugins/",
+  "status": "publish"
+ },
+ "top-6-wordpress-contact-form-plugins": {
+  "date": "2026-09-13",
+  "id": 1999,
+  "path": "/wp-plugins/top-6-wordpress-contact-form-plugins/",
+  "status": "publish"
+ },
+ "top-6-wordpress-image-optimization-plugins": {
+  "date": "2026-09-13",
+  "id": 1995,
+  "path": "/wp-plugins/top-6-wordpress-image-optimization-plugins/",
+  "status": "publish"
+ },
+ "top-6-wordpress-page-builders": {
+  "date": "2026-09-13",
+  "id": 1998,
+  "path": "/wp-plugins/top-6-wordpress-page-builders/",
+  "status": "publish"
+ },
+ "top-6-wordpress-security-plugins": {
+  "date": "2026-09-13",
+  "id": 1836,
+  "path": "/wp-plugins/top-6-wordpress-security-plugins/",
+  "status": "publish"
+ },
+ "top-6-wordpress-seo-plugins": {
+  "date": "2026-09-13",
+  "id": 1996,
+  "path": "/wp-plugins/top-6-wordpress-seo-plugins/",
+  "status": "publish"
+ },
+ "top-free-wordpress-themes": {
+  "date": "2025-12-29",
+  "id": 901,
+  "path": "/wp-themes/top-free-wordpress-themes/",
+  "status": "publish"
+ },
+ "top-hosting-providers-for-wordpress": {
+  "date": "2025-12-28",
+  "id": 893,
+  "path": "/hosting/top-hosting-providers-for-wordpress/",
+  "status": "publish"
+ },
+ "unlock-websites-potential-with-kadencewp": {
+  "date": "2026-02-23",
+  "id": 1511,
+  "path": "/wp-themes/unlock-websites-potential-with-kadencewp/",
+  "status": "publish"
+ },
+ "what-is-wordpress": {
+  "date": "2025-12-28",
+  "id": 786,
+  "path": "/wordpress/what-is-wordpress/",
+  "status": "publish"
+ },
+ "wordpress-com-vs-wordpress-org": {
+  "date": "2026-07-19",
+  "id": 1617,
+  "path": "/wordpress/wordpress-com-vs-wordpress-org/",
+  "status": "publish"
+ },
+ "wordpress-dashboard-explained": {
+  "date": "2026-08-02",
+  "id": 1626,
+  "path": "/wordpress/wordpress-dashboard-explained/",
+  "status": "publish"
+ },
+ "wordpress-seo-for-beginners": {
+  "date": "2026-09-13",
+  "id": 2003,
+  "path": "/wordpress/wordpress-seo-for-beginners/",
+  "status": "publish"
+ }
+}
