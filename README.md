@@ -33,7 +33,12 @@ automatically when a request matches their description, or invoke them directly 
 `/onywrites` or `/nu-term-paper`.
 
 `nu-term-paper` needs the system folder too: keep the cloned repository (or at least
-`nu-term-paper-system/`) somewhere permanent and set the path at the top of its `SKILL.md`.
+`nu-term-paper-system/`) somewhere permanent and set the path at the top of its `SKILL.md` —
+or simply install the system folder itself as the skill:
+
+```bash
+cp -R onylogy-claude/nu-term-paper-system ~/.claude/skills/nu-term-paper
+```
 
 To install into a single project instead of globally, copy the skill folder to
 `.claude/skills/` inside that project's repository.
@@ -45,7 +50,8 @@ skills/
   <skill-name>/
     SKILL.md          required: frontmatter (name, description) + instructions
     references/       optional: supporting docs the skill loads on demand
-<system-name>/        optional: a larger package a skill depends on (playbook, templates, tooling)
+<system-name>/        optional: a larger package a skill depends on (playbook, templates, tooling);
+    SKILL.md          it carries its own SKILL.md + references/ so the folder is also installable as a skill
 ```
 
 ## License

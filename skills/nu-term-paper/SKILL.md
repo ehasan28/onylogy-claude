@@ -10,8 +10,11 @@ This skill is the entry point for a full production **system** that lives at the
 
 ```
 onylogy-claude/
-├── skills/nu-term-paper/SKILL.md      ← you are here
-└── nu-term-paper-system/              ← the system
+├── skills/nu-term-paper/
+│   ├── SKILL.md                       ← you are here (thin wrapper)
+│   └── references/                    ← same reference docs as the system, for quick lookup
+└── nu-term-paper-system/              ← the system (also a complete skill on its own: it has its own SKILL.md)
+    ├── SKILL.md
     ├── term-paper-write.md            ← the playbook (authoritative procedure)
     ├── skeleton/                      ← manuscript skeleton with all fixed template strings
     ├── tooling/                       ← docx build pipeline (footnotes, TOC page map, Bijoy copy)
@@ -26,7 +29,7 @@ folder into `~/.claude/skills/`, edit the path below to the absolute location of
 1. `Read` `$SYSTEM/term-paper-write.md` completely (~350 lines — read all of it, not the first screen).
 2. Follow its **Quick start** (14 steps) and tick every box in **§0 Definition of done** before reporting completion.
 3. Copy `$SYSTEM/skeleton/` and `$SYSTEM/tooling/` into the new paper's project folder as the playbook instructs; never rebuild the pipeline from scratch.
-4. Consult `$SYSTEM/references/` whenever unsure how a section should read.
+4. Consult `references/` (here, or `$SYSTEM/references/` — identical) whenever unsure how a section should read.
 
 Prerequisites on the machine: Node ≥ 18, Poppler (`pdftoppm`, `pdftotext`), LibreOffice (native
 binary), the Siyam Rupali font (shipped in `tooling/`) installed for LibreOffice, and
