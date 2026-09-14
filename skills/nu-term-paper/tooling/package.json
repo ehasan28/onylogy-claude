@@ -1,0 +1,10 @@
+{
+  "name": "nu-term-paper-tooling",
+  "private": true,
+  "description": "Build tooling for NU-format Bangla term papers (docx with footnotes, Bijoy copy, page map).",
+  "dependencies": {
+    "@codesigntheory/bnunicode2ansi": "^1.6.1",
+    "bijoy2unicode": "^1.0.2",
+    "docx": "^9.7.1"
+  }
+}

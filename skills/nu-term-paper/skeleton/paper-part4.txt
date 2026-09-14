@@ -1,0 +1,58 @@
+=== CHAPTER: পঞ্চম অধ্যায়
+
+## ৫.১  সারাংশঃ
+
+{{TOPIC}} বর্তমান সমাজের একটি আলোচিত বিষয়। মানব জীবনের কোনো দিকই এর কবল থেকে মুক্ত নয়। {{ONE dense paragraph (14–18 sentences) that re-states the paper's key numbers in the order they appeared: scale → gap/contrast → victims → types → impacts → reporting/justice → institutions → global comparison → current law.}} মূলত এসব তথ্য থেকেই {{TOPIC}}-এর ভয়াবহ রূপ লক্ষ্য করা যায়।
+
+## ৫.২  সুপারিশমালাঃ
+
+{{TOPIC}} সমস্যা সমাধানের সুপারিশসমূহ নিম্নরূপঃ
+
+১. {{…}} করতে হবে।
+
+২. {{…}} করতে হবে।
+
+৩. {{…}} করতে হবে।
+
+৪. {{…}} করতে হবে।
+
+৫. {{…}} করতে হবে।
+
+৬. {{…}} করতে হবে।
+
+৭. {{…}} করতে হবে।
+
+৮. {{…}} দিতে হবে।
+
+৯. {{…}} করতে হবে।
+
+১০. {{…}} নিশ্চিত করতে হবে।
+
+১১. {{…}} প্রণয়ন করতে হবে।
+
+১২. {{…}} চালাতে হবে।
+
+১৩. {{…}} করতে হবে।
+
+১৪. {{…}} মানতে হবে।
+
+১৫. বিদেশ থেকে আমদানিকৃত নীতিমালা হুবহু অনুকরণ না করে স্থানীয় সামাজিক ও সাংস্কৃতিক বাস্তবতার আলোকে {{policy area}} নীতিমালা প্রণয়ন করতে হবে, যা {{group}}-এর {{participation}}কে সংকুচিত না করে বরং নিরাপদ করবে।
+
+## ৫.৩  উপসংহারঃ
+
+{{TOPIC}} বর্তমান বিশ্বের একটি প্রধান সামাজিক সমস্যা। এটি মানব জীবনকে ব্যাপকভাবে প্রভাবিত করে। মানব জীবনের সামাজিক, রাজনৈতিক ও অর্থনৈতিক কোনো দিকই এর কবল থেকে মুক্ত নয়। সমাজতাত্ত্বিক বিশ্লেষণে দেখা যায়, {{2–3 sentences tying the theories of ৪.৪ to the findings}}। একটি সমস্যা অন্য সমস্যার সঙ্গে জড়িত। {{chain sentence}}। এর ফলে {{national-level consequence}}। তাই এটিকে প্রতিরোধ করতে হবে। কিন্তু শুধু সরকার বা জনগণ কারো একার পক্ষে তা সম্ভব নয়। তাই সরকার, {{actors}}, পরিবার ও জনসাধারণ ঐক্যবদ্ধ প্রচেষ্টা গ্রহণ করে এ সমস্যা সমাধানের পদক্ষেপ নিতে হবে। তবেই {{desired end state}} সম্ভব।
+
+=== BIBLIO: গ্রন্থপঞ্জি
+
+১) আবু শামীম, শেখ মোহাম্মদ এবং সুলতানা, মোসাঃ পারভীন, *সামাজিক সমস্যা*, ঢাকা: লেখাপড়া, ফেব্রুয়ারী ২০১৩।
+২) ইসলাম, মোহাম্মদ রফিকুল এবং আল ফারুকী, মুহাম্মদ জাকির, *সমাজবিজ্ঞান পরিচিতি*, ঢাকা: লেখাপড়া, পুনর্মুদ্রণ জানুয়ারি ২০১৩।
+{{৩)… English books, alphabetical by surname: Surname, Given, *Title*, City: Publisher, Year.}}
+{{Journal articles, alphabetical: Surname, Given and Surname, Given, ‘Title’, *Journal*, vol(issue), year, pp. a–b.}}
+{{Reports: Organisation, *Title*, City, Month Year.}}
+{{Laws: আইনের নাম, সাল (সনের নং আইন), bdlaws.minlaw.gov.bd/act-details-NNNN.html}}
+{{Newspapers: Outlet, ‘Headline’, date; ‘Headline 2’, date, www.domain}}
+{{Websites: Organisation, ‘Page title’, URL (প্রবেশের তারিখ: DD Month YYYY)।}}
+
+=== FOOTNOTES
+
+@@fn {{key}}: {{Author/Org, Title, place, year, পৃষ্ঠা নং N।}}

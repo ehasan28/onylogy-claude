@@ -1,0 +1,131 @@
+=== CHAPTER: চতুর্থ অধ্যায়
+
+## ৪.১  {{S41 = বাংলাদেশে [context] ও [TOPIC]-এর পরিস্থিতি}}ঃ
+
+বর্তমানে বাংলাদেশের সামাজিক জীবনে একটি আলোচিত প্রত্যয় {{TOPIC TERM}}। {{context}}-এর ব্যাপক প্রসারের সঙ্গে সঙ্গে আর্থ-সামাজিক জীবনে এর প্রভাব সুদূরপ্রসারী। ঢাকা, চট্টগ্রাম, খুলনা, রাজশাহীর মতো বড় শহরের পাশাপাশি উপজেলা ও গ্রামেও সমস্যাটি ছড়িয়ে পড়েছে। প্রতিটি সমস্যার সঙ্গেই {{core inequality}} প্রত্যক্ষ বা পরোক্ষভাবে জড়িত। নিম্নে বাংলাদেশে {{TOPIC}}-এর পরিস্থিতি সম্পর্কে আলোচনা করা হলো।
+
+### ক. {{sub-picture 1}} ঃ
+
+{{4–6 sentences, 2–3 footnoted figures, end with a one-line interpretation.}}
+
+### খ. {{sub-picture 2}} ঃ
+
+{{…}}
+
+### গ. {{sub-picture 3}} ঃ
+
+{{…}}
+
+### ঘ. {{sub-picture 4}} ঃ
+
+{{…}}
+
+### ঙ. {{sub-picture 5 — the hidden/unreported dimension}} ঃ
+
+{{…}}
+
+[TABLE] {{Table 1 title}} ঃ
+| {{col}} | {{col}} | {{col}} | উৎস ও সাল |
+| {{row}} | {{v}} | {{v}} | {{source, year}} |
+| {{row}} | {{v}} | {{v}} | {{source, year}} |
+| {{row}} | {{v}} | {{v}} | {{source, year}} |
+| {{row}} | {{v}} | {{v}} | {{source, year}} |
+| {{row}} | {{v}} | {{v}} | {{source, year}} |
+[/TABLE] উৎসঃ {{Org (year), Org (year) ও Org (year)।}}
+
+উপরোক্ত সারণি থেকে লক্ষ্য করা যায় যে, {{2–4 sentences reading the table; end with the paper's central contrast: "এই ব্যবধানই প্রমাণ করে যে সমস্যাটি নিছক […] নয়, বরং […]।"}}
+
+## ৪.২  {{S42 = [TOPIC]-এর ধরন}}ঃ
+
+{{TOPIC}} কোনো একটি মাত্র আচরণ নয়, বরং অনেকগুলো আচরণের সমষ্টি। {{one sentence on how types are changing}}। নিম্নে প্রধান ধরনসমূহ আলোচনা করা হলোঃ
+
+### ১. {{type}} ঃ
+
+{{3–5 sentences: definition in plain words, 1–2 footnoted figures, one consequence sentence.}}
+
+### ২. {{type}} ঃ
+
+{{…}}
+
+### ৩. {{type}} ঃ
+
+{{…}}
+
+### ৪. {{type}} ঃ
+
+{{…}}
+
+### ৫. {{type}} ঃ
+
+{{…}}
+
+### ৬. {{type}} ঃ
+
+{{…}}
+
+### ৭. {{type}} ঃ
+
+{{…}}
+
+[TABLE] {{Table 2 title — an official breakdown by type}} ঃ
+| {{type}} | {{rate}} |
+| {{…}} | {{…}} |
+[/TABLE] উৎসঃ {{…}}
+
+উপরোক্ত সারণি থেকে লক্ষ্য করা যায় যে, {{2–3 sentences, contrast the official record with survey reality}}।
+
+## ৪.৩  {{S43 = [TOPIC] সৃষ্টির কারণ}}ঃ
+
+{{Three structural drivers in one sentence}} একসঙ্গে মিলে {{context}}-এর উপর মারাত্মক প্রতিক্রিয়া সৃষ্টি করেছে। যার ফলে {{TOPIC}}-এর হার বাড়ছে। নিম্নে এর কারণসমূহ আলোচনা করা হলোঃ
+
+### (১) {{structural/cultural root cause}} ঃ
+
+{{4–6 sentences; cite a Bangladesh study.}}
+
+### (২) {{cause}} ঃ
+
+{{…}}
+
+### (৩) {{cause}} ঃ
+
+{{…}}
+
+### (৪) {{cause}} ঃ
+
+{{…}}
+
+### (৫) {{cause}} ঃ
+
+{{…}}
+
+### (৬) {{institutional failure cause — include a conviction/enforcement figure}} ঃ
+
+{{…}}
+
+### (৭) {{market/platform/structural incentive cause}} ঃ
+
+{{…}}
+
+## ৪.৪  সমাজতাত্ত্বিক তত্ত্বের আলোকে বিশ্লেষণঃ
+
+{{TOPIC}}কে কেবল {{surface framing}} হিসেবে দেখলে এর আসল রূপ বোঝা যায় না। সমাজবিজ্ঞানের বিভিন্ন তত্ত্বের আলোকে বিশ্লেষণ করলে দেখা যায়, এটি সমাজকাঠামোরই একটি প্রকাশ। নিম্নে প্রাসঙ্গিক তত্ত্বসমূহ আলোচনা করা হলোঃ
+
+### ক. {{Theory 1 (e.g. নারীবাদী তত্ত্ব ও পিতৃতন্ত্র / কার্যবাদ / দ্বন্দ্ব তত্ত্ব)}} ঃ
+
+{{Theorist + book + year (footnote) → core idea in two plain sentences → application to the Bangladesh evidence (cite a figure or study) → one-sentence verdict.}}
+
+### খ. {{Theory 2}} ঃ
+
+{{…}}
+
+### গ. {{Theory 3}} ঃ
+
+{{…}}
+
+### ঘ. {{Theory 4 (Durkheim's anomie fits almost any rapid-change topic)}} ঃ
+
+{{…}}
+
+### ঙ. {{Theory 5 (Goffman/labelling fits stigma topics; Merton's strain fits deviance topics)}} ঃ
+
+{{…}}

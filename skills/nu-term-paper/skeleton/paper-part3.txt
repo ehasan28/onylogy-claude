@@ -1,0 +1,93 @@
+## ৪.৫  {{S45 = [TOPIC]-এর প্রভাব ও ফলাফল}}ঃ
+
+{{One sentence: the harm is invisible but lasting.}} একটি {{event}} {{victim}}-এর মানসিক, সামাজিক, শিক্ষাগত ও অর্থনৈতিক জীবনে একসঙ্গে আঘাত করে। নিম্নে এর প্রধান ফলাফলসমূহ আলোচনা করা হলোঃ
+
+### ১. মানসিক প্রভাব ঃ
+
+{{3–4 footnoted figures from different sources; one sentence on long-term effect.}}
+
+### ২. সামাজিক প্রভাব ঃ
+
+{{…}}
+
+### ৩. শিক্ষাগত প্রভাব ঃ
+
+{{…}}
+
+### ৪. অর্থনৈতিক প্রভাব ঃ
+
+{{…}}
+
+### ৫. {{structural/collective effect (e.g. withdrawal from a sphere)}} ঃ
+
+{{…}}
+
+### ৬. {{extreme outcomes / physical safety}} ঃ
+
+{{…}}
+
+উপরের আলোচনা থেকে দেখা যায়, {{two summary ratios}}। একটি সমস্যা অন্য সমস্যার জন্ম দেয়; {{chain A → B → C → D}}। এই শৃঙ্খলই {{TOPIC}}কে একটি সামাজিক সমস্যায় পরিণত করেছে।
+
+## ৪.৬  আইনি কাঠামো ও প্রাতিষ্ঠানিক প্রতিকার ব্যবস্থাঃ
+
+বাংলাদেশে {{problem}} মোকাবিলায় একাধিক আইন ও প্রতিষ্ঠান গড়ে উঠেছে। {{one sentence on how often the law changed}}। কিন্তু আইন থাকা আর আইন কাজ করা এক কথা নয়। নিম্নে বিদ্যমান কাঠামো আলোচনা করা হলো।
+
+[TABLE] বাংলাদেশে {{problem}} সংক্রান্ত প্রধান আইনসমূহ ঃ
+| আইনের নাম | সাল | {{group}}সংশ্লিষ্ট প্রধান বিষয় | বর্তমান অবস্থা |
+| {{Act}} | {{year}} | {{section + subject}} | বলবৎ / রহিত ({{year}}) / আইনে রূপান্তরিত |
+[/TABLE] উৎসঃ আইন, বিচার ও সংসদ বিষয়ক মন্ত্রণালয়, বাংলাদেশ কোড (bdlaws.minlaw.gov.bd)।
+
+### ক. আইনি কাঠামো ঃ
+
+{{Current principal Act with number and dates (footnote) → the key section paraphrased → ONE verbatim quoted clause in the Act's own সাধু ভাষা inside “ ” with footnote → older Act still in force (footnote).}}
+
+### খ. প্রাতিষ্ঠানিক ব্যবস্থা ঃ
+
+{{Dedicated unit (launch date, who runs it, how to reach it, footnoted volume figure) → other agencies/helplines → courts/tribunals (when created, how many).}}
+
+### গ. কাঠামোর দুর্বলতা ঃ
+
+{{Victim-side dissatisfaction figures → an official's quoted explanation (footnoted news) → a peer-reviewed study on institutional constraints → one legal design flaw (e.g. bailable/compoundable) → closing sentence "ফলে আইন থাকা সত্ত্বেও … অব্যাহত রয়েছে।"}}
+
+## ৪.৭  {{S47 = [TOPIC] প্রতিরোধের উপায়}}ঃ
+
+{{TOPIC}} {{context}}-এর একটি প্রধান সমস্যা। এই সমস্যা যে সকল উপায়ে প্রতিরোধ করা সম্ভব তা নিম্নে আলোচনা করা হলো।
+
+### (১) {{remedy — awareness/literacy}} ঃ
+
+{{3–4 sentences; anchor to a cited gap figure: "যেহেতু … সেহেতু …"}}
+
+### (২) {{remedy — education/curriculum}} ঃ
+
+### (৩) {{remedy — law enforcement}} ঃ
+
+### (৪) {{remedy — victim-friendly institutions}} ঃ
+
+### (৫) {{remedy — private-sector/platform accountability}} ঃ
+
+### (৬) {{remedy — family & community}} ঃ
+
+### (৭) {{remedy — media & campaigns}} ঃ
+
+## ৪.৮  {{S48 = [TOPIC] পরিস্থিতির বিভিন্নতা}}ঃ
+
+### বাংলাদেশ ঃ
+
+{{Compact recap of the Bangladesh picture with 4–5 footnoted figures, the distinctive national feature, the legal status, one weakness.}}
+
+### {{Country/region 2 (a developing peer)}} ঃ
+
+{{5–7 sentences with its own footnoted figures; end with "বাংলাদেশের সঙ্গে মিল হলো … পার্থক্য …"}}
+
+### {{Country 3 (a developed country)}} ঃ
+
+{{…; end with the lesson: "এ থেকে প্রমাণিত হয়, অর্থনৈতিক উন্নয়ন একাই … ঠেকাতে পারে না; এর মূল কারণ …।"}}
+
+[TABLE] বিশ্বের বিভিন্ন অঞ্চল ও দেশে {{measure}}-এর চিত্র ঃ
+| অঞ্চল / দেশ | {{measure}} (%) | যাদের উপর জরিপ | উৎস |
+| বৈশ্বিক গড় | {{…}} | {{…}} | {{Org, year}} |
+| {{region}} | {{…}} | {{…}} | {{…}} |
+| বাংলাদেশ | {{…}} | {{…}} | {{…}} |
+[/TABLE] উৎসঃ {{…}}
+
+উপরোক্ত সারণি থেকে লক্ষ্য করা যায় যে, {{TOPIC}} কোনো নির্দিষ্ট অঞ্চলের সমস্যা নয়। {{highest vs lowest}}। {{one caution that surveys differ in age range/period/question}}। আসল পার্থক্য {{where the real difference lies}}। অর্থাৎ সমস্যা সর্বজনীন হলেও তার সামাজিক পরিণতি ও প্রতিকারের সুযোগ দেশভেদে ভিন্ন।

@@ -1,0 +1,4 @@
+SiyamRupali.ttf — Siyam Rupali, a free Unicode Bangla font by potasiyam (https://github.com/potasiyam/Siyam-Rupali),
+distributed under the GNU General Public License. Included here unmodified for convenience; it is not covered by
+this repository's MIT licence. Use it (or any Unicode Bangla font) for previews; the National University format
+itself requires SutonnyMJ for print, which is produced by the --bijoy build.
