@@ -47,7 +47,7 @@ def main():
         notes.append(f"draft (block tree only): headings={nh} images={ni} paragraphs={names.count('core/paragraph')} tables={names.count('core/table')} lists={names.count('core/list')}")
         if nh != len(local_heads): fails.append(f"heading count {nh} on site vs {len(local_heads)} local")
         if ni != local_imgs: fails.append(f"{ni} images on site vs {local_imgs} expected")
-        content = ""
+        content = ""; heads = [None] * nh
     else:
         title = html.unescape(str(post.get("title", {}).get("rendered", "")))
         if title and title != h1: fails.append(f"title differs: site '{title}' vs local '{h1}'")
@@ -69,7 +69,7 @@ def main():
     dashes = len(re.findall("—|–", re.sub(r"\d–\d", "", content)))
     if dashes: fails.append(f"{dashes} dash character(s) in content")
     words = len(re.sub(r"<[^>]+>", " ", content).split())
-    notes.append(f"headings={len(heads)} images={imgs} words≈{words} internal={len(re.findall(r'href=\"/', content))} external={len(re.findall(r'href=\"https?://(?!onylogy)', content))}")
+    if content: notes.append(f"headings={len(heads)} images={imgs} words≈{words} internal={len(re.findall(r'href=\"/', content))} external={len(re.findall(r'href=\"https?://(?!onylogy)', content))}")
     try:
         seo = nova("rank-math/get-post-seo-meta", {"post_id": pid})
         fk = seo.get("focus_keyword") or seo.get("rank_math_focus_keyword"); desc = seo.get("description") or seo.get("rank_math_description")

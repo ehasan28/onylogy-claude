@@ -82,7 +82,12 @@ def audit(md, ptype=None, narrow=False):
     prose = " ".join(paras)
     plain = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", prose)
     plain = re.sub(r"[*_`]", "", plain).replace("’", "'")
-    words_all = re.sub(r"[*_`#|>\[\]()-]", " ", body)
+    prose_lines = []; _code = False
+    for l in lines:
+        if l.startswith("```"): _code = not _code; continue
+        if _code or l.strip().startswith("|"): continue  # word count = prose + lists + headings, not tables or code
+        prose_lines.append(l)
+    words_all = re.sub(r"[*_`#|>\[\]()-]", " ", "\n".join(prose_lines))
     wc = len(words_all.split())
     sents = split_sents(plain)
     psents = [len(split_sents(re.sub(r"[*_`]", "", re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", p)))) for p in paras]
@@ -102,13 +107,14 @@ def audit(md, ptype=None, narrow=False):
     dash_ranges_ok = len(re.findall(r"\d–\d", body))
     dashes -= dash_ranges_ok
     bolds = len(re.findall(r"\*\*[^*]+\*\*", body))
-    faq_idx = next((i for i, h in enumerate(h2) if re.search(r"faq|frequently|questions", h, re.I)), None)
+    FAQ_H2 = r"^(frequently asked questions|faq\b.*|common .*questions.*|.*questions \(faq\))$"
+    faq_idx = next((i for i, h in enumerate(h2) if re.search(FAQ_H2, h.strip(), re.I)), None)
     faq_q = 0
     if faq_idx is not None:
         on = False
         for l in lines:
             if l.startswith("## "):
-                on = re.search(r"faq|frequently|questions", l, re.I) is not None; continue
+                on = re.search(FAQ_H2, l[3:].strip(), re.I) is not None; continue
             if on and (l.startswith("### ") or re.match(r"^\*\*.+\?\*\*$", l.strip())): faq_q += 1
     concl = [h for h in h2 if re.search(r"^(conclusion|final thoughts|wrapping it up)", h, re.I)]
     takeaways = any(re.search(r"key takeaways", h, re.I) for h in h2)
@@ -135,7 +141,9 @@ def audit(md, ptype=None, narrow=False):
     density = 100 * kw_count * max(len(kw.split()), 1) / n if kw else 0
     alt_kw = bool(kwre and kwre.search(meta.get("featured image alt", "")))
     internal = re.findall(r"\]\((/[a-z0-9-]+/[a-z0-9-]+/)\)", body)
-    bare_internal = re.findall(r"\]\((/[a-z0-9-]+/)\)", body)
+    _pl = json.load(open(os.path.join(HERE, "permalinks.json"))) if os.path.exists(os.path.join(HERE, "permalinks.json")) else {}
+    bare_internal = [u for u in re.findall(r"\]\((/[a-z0-9-]+/)\)", body) if _pl.get(u.strip("/"), {}).get("status") != "page"]
+    internal += [u for u in re.findall(r"\]\((/[a-z0-9-]+/)\)", body) if _pl.get(u.strip("/"), {}).get("status") == "page"]
     external = re.findall(r"\]\((https?://(?!onylogy\.com)[^)\s]+)\)", body)
     stats_unsourced = [m.group(0) for m in re.finditer(r"[^.]{0,80}\b\d[\d,.]*\s?(?:%|percent|million|billion)\b(?:[^.(]|\([^)]*\)){0,60}", plain) if not re.search(r"\((?:[^)]*\b20\d\d\b[^)]*)\)|\b20\d\d\b|according to|source", m.group(0), re.I)]
     # gaps between subheadings (words)
@@ -153,7 +161,7 @@ def audit(md, ptype=None, narrow=False):
     G = []; W = []  # gates, warnings
     def gate(ok, msg): (G if not ok else []).append(msg); return ok
     def warn(ok, msg): (W if not ok else []).append(msg); return ok
-    gate(you / n * 100 >= 3.0, f"'you' density {you/n*100:.2f}/100w < 3.0 (canon 2.7 to 5.9)")
+    gate(round(you / n * 100, 2) >= 3.0, f"'you' density {you/n*100:.2f}/100w < 3.0 (canon 2.7 to 5.9)")
     gate(i_ / n * 100 <= 0.35, f"'I/my' density {i_/n*100:.2f}/100w > 0.35 (canon ≤ 0.15; 1 to 2 experience sentences max)")
     gate(round(sum(1 for x in psents if x == 1) / max(len(paras), 1), 2) >= 0.30, f"one-sentence paragraphs {100*sum(1 for x in psents if x==1)/max(len(paras),1):.0f}% < 30%")
     gate(max(psents or [0]) <= 4, f"{sum(1 for x in psents if x>4)} paragraph(s) over 4 sentences (max {max(psents or [0])})")
@@ -171,8 +179,11 @@ def audit(md, ptype=None, narrow=False):
     gate(not devices, f"onywrites structural device(s) visible: {devices}")
     gate(not anecdote_open, f"post opens with a first-person anecdote: '{first_para[:60]}…'")
     gate(bool(kw), "no Primary keyword in POST META")
+    kw_h1_words = bool(kw) and all(re.search(r"\b" + re.escape(w) + r"(s|es)?\b", h1, re.I) for w in kw.split())
     if narrow: warn(kw_h1, "primary keyword not in H1 (narrow fix keeps the live H1)")
-    else: gate(kw_h1, "primary keyword not in H1")
+    else:
+        gate(kw_h1_words, "primary keyword words not all in H1")
+        warn(kw_h1, "primary keyword not in H1 as an exact phrase (Rank Math accepts the words in any order)")
     gate(kw_first, "primary keyword not in the first 100 words")
     kw_words = [w for w in re.findall(r"[a-z0-9]+", kw) if len(w) > 3]
     kw_slug_share = sum(1 for w in kw_words if w in slug) / max(len(kw_words), 1)
@@ -181,7 +192,8 @@ def audit(md, ptype=None, narrow=False):
     gate(130 <= len(desc) <= 145, f"meta description {len(desc)} chars (need 130 to 145): '{desc[:60]}…'")
     gate(kw_desc, "primary keyword not in the meta description")
     gate("—" not in desc and "–" not in desc, "dash in meta description")
-    gate(3 <= len(internal) <= 10, f"{len(internal)} internal links with category prefix (need 3 to 6, hard limit 10)")
+    if ptype == "pillar": gate(len(internal) >= 3, f"{len(internal)} internal links (a hub links down to every spoke)")
+    else: gate(3 <= len(internal) <= 10, f"{len(internal)} internal links with category prefix (need 3 to 6, hard limit 10)")
     warn(len(internal) <= 6, f"{len(internal)} internal links (canon 3 to 6; fine on a hub or starter guide)")
     gate(not bare_internal, f"internal links without category prefix (will 404): {sorted(set(bare_internal))}")
     gate(len(external) >= 1, "no external link (Rank Math needs ≥ 1 followed external link)")

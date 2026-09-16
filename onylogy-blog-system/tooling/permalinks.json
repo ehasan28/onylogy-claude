@@ -5,6 +5,12 @@
   "path": "/wp-plugins/6-must-have-wordpress-plugins/",
   "status": "publish"
  },
+ "blog": {
+  "date": null,
+  "id": 428,
+  "path": "/blog/",
+  "status": "page"
+ },
  "build-homepage-kadence-blocks": {
   "date": null,
   "id": null,
@@ -23,11 +29,23 @@
   "path": "/wordpress/common-wordpress-mistakes-beginners-make/",
   "status": "publish"
  },
+ "contact": {
+  "date": null,
+  "id": 1032,
+  "path": "/contact/",
+  "status": "page"
+ },
  "elementor-vs-gutenberg": {
   "date": "2026-09-13",
   "id": 2004,
   "path": "/wordpress/elementor-vs-gutenberg/",
   "status": "publish"
+ },
+ "home": {
+  "date": null,
+  "id": 340,
+  "path": "/",
+  "status": "page"
  },
  "how-to-back-up-wordpress-site": {
   "date": "2026-09-13",
@@ -155,6 +173,18 @@
   "path": "/wp-plugins/litespeed-cache-advanced-configuration-guide/",
   "status": "publish"
  },
+ "privacy-policy": {
+  "date": null,
+  "id": 707,
+  "path": "/privacy-policy/",
+  "status": "page"
+ },
+ "terms-of-service": {
+  "date": null,
+  "id": 705,
+  "path": "/terms-of-service/",
+  "status": "page"
+ },
  "top-6-domain-registration-websites": {
   "date": "2026-09-13",
   "id": 1997,
@@ -244,5 +274,11 @@
   "id": 2003,
   "path": "/wordpress/wordpress-seo-for-beginners/",
   "status": "publish"
+ },
+ "work": {
+  "date": null,
+  "id": 422,
+  "path": "/work/",
+  "status": "page"
  }
 }

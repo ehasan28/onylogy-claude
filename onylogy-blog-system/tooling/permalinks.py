@@ -33,6 +33,9 @@ def refresh():
             links[p["slug"]] = {"path": p["link"].replace(SITE, ""), "id": p["id"], "status": "publish", "date": p["date"][:10]}
         if len(posts) < 100: break
         page += 1
+    # published pages (contact, about, ...) so bare /slug/ page links resolve too
+    for pg in get(f"{SITE}/wp-json/wp/v2/pages?per_page=100&_fields=id,slug,link,status"):
+        links.setdefault(pg["slug"], {"path": pg["link"].replace(SITE, ""), "id": pg["id"], "status": "page", "date": None})
     # local drafts not yet public
     if os.path.isdir(BLOGS):
         for slug in sorted(os.listdir(BLOGS)):
