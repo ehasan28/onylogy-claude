@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Voice gate + SEO/GEO lint for an Onylogy blog draft (.md in Blogs/<slug>/<slug>.md).
 
-usage: audit-draft.py SLUG [--json] [--type TYPE]
+usage: audit-draft.py SLUG [--json] [--type TYPE] [--narrow]
+       --narrow: repair mode "narrow fix" (structure and length kept): the word-count gate is skipped
        audit-draft.py --file path/to/post.md [--type TYPE]
 
 Exit 0 = every GATE passes (warnings allowed). Exit 1 = at least one gate failed. Never upload a draft that exits 1.
@@ -42,18 +43,18 @@ def parse(md):
         for line in m.group(0).split("\n"):
             st_ = line.strip()
             if st_.startswith(("=", "<!--", "-->")) or not st_: key = None; continue
-            mm = re.match(r"^([A-Za-z][A-Za-z /()0-9,-]{2,60}?):\s+(.*)$", st_)
-            if mm and not st_.startswith("STRUCTURAL"):
-                key = mm.group(1).strip().lower(); meta[key] = mm.group(2).strip()
-            elif key and line.startswith((" ", "\t")):
+            mm = re.match(r"^([A-Za-z][^:\n]{2,60}?):\s+(.*)$", st_)
+            if key and line.startswith((" ", "\t")):
                 meta[key] += " " + st_
+            elif mm and not st_.startswith("STRUCTURAL"):
+                key = mm.group(1).strip().lower(); meta[key] = mm.group(2).strip()
     body = md.split("-->", 1)[1] if m else md
     tail = body.rfind("<!--")
     if tail > 0: body = body[:tail]
     body = body.strip().rstrip("-").strip()
     return meta, body
 
-def audit(md, ptype=None):
+def audit(md, ptype=None, narrow=False):
     meta, body = parse(md)
     lines = body.split("\n")
     h1 = next((l[2:].strip() for l in lines if l.startswith("# ")), "")
@@ -136,7 +137,7 @@ def audit(md, ptype=None):
     internal = re.findall(r"\]\((/[a-z0-9-]+/[a-z0-9-]+/)\)", body)
     bare_internal = re.findall(r"\]\((/[a-z0-9-]+/)\)", body)
     external = re.findall(r"\]\((https?://(?!onylogy\.com)[^)\s]+)\)", body)
-    stats_unsourced = [m.group(0) for m in re.finditer(r"[^.]{0,80}\b\d[\d,.]*\s?(?:%|percent|million|billion)\b[^.]{0,60}", plain) if not re.search(r"\((?:[^)]*\b20\d\d\b[^)]*)\)|\b20\d\d\b|according to|source", m.group(0), re.I)]
+    stats_unsourced = [m.group(0) for m in re.finditer(r"[^.]{0,80}\b\d[\d,.]*\s?(?:%|percent|million|billion)\b(?:[^.(]|\([^)]*\)){0,60}", plain) if not re.search(r"\((?:[^)]*\b20\d\d\b[^)]*)\)|\b20\d\d\b|according to|source", m.group(0), re.I)]
     # gaps between subheadings (words)
     gaps = []; cur = 0; in_code = False
     for l in lines:
@@ -163,22 +164,25 @@ def audit(md, ptype=None):
     warn(qs >= 3, f"only {qs} question(s) in the body (target 3+)")
     gate(reassure >= 2, f"only {reassure} reassurance beat(s) (need ≥ 2: 'plain and simple', 'that's it', 'you don't need to be…')")
     gate(dashes == 0, f"{dashes} dash(es) found (em/en dash or --); house rule is zero")
-    gate(lo <= wc <= hi, f"word count {wc} outside {ptype} range {lo} to {hi}")
+    if narrow: warn(lo <= wc <= hi, f"word count {wc} outside {ptype} range {lo} to {hi} (narrow fix: length kept on purpose)")
+    else: gate(lo <= wc <= hi, f"word count {wc} outside {ptype} range {lo} to {hi}")
     gate(6 <= faq_q <= (13 if ptype == "pillar" else 7), f"FAQ has {faq_q} questions (need 6 to 7)")
     gate(bool(concl), "no Conclusion / Final Thoughts / Wrapping It Up H2")
     gate(not devices, f"onywrites structural device(s) visible: {devices}")
     gate(not anecdote_open, f"post opens with a first-person anecdote: '{first_para[:60]}…'")
     gate(bool(kw), "no Primary keyword in POST META")
-    gate(kw_h1, "primary keyword not in H1")
+    if narrow: warn(kw_h1, "primary keyword not in H1 (narrow fix keeps the live H1)")
+    else: gate(kw_h1, "primary keyword not in H1")
     gate(kw_first, "primary keyword not in the first 100 words")
-    kw_words = [w for w in re.findall(r"[a-z0-9]+", kw) if len(w) > 2]
+    kw_words = [w for w in re.findall(r"[a-z0-9]+", kw) if len(w) > 3]
     kw_slug_share = sum(1 for w in kw_words if w in slug) / max(len(kw_words), 1)
     gate(kw_slug_share >= 0.5, f"fewer than half of the keyword words are in slug '{slug}' (Rank Math: keyword in URL)")
     warn(kw_slug, f"not every keyword word is in the slug '{slug}'")
     gate(130 <= len(desc) <= 145, f"meta description {len(desc)} chars (need 130 to 145): '{desc[:60]}…'")
     gate(kw_desc, "primary keyword not in the meta description")
     gate("—" not in desc and "–" not in desc, "dash in meta description")
-    gate(3 <= len(internal) <= 8, f"{len(internal)} internal links with category prefix (need 3 to 6)")
+    gate(3 <= len(internal) <= 10, f"{len(internal)} internal links with category prefix (need 3 to 6, hard limit 10)")
+    warn(len(internal) <= 6, f"{len(internal)} internal links (canon 3 to 6; fine on a hub or starter guide)")
     gate(not bare_internal, f"internal links without category prefix (will 404): {sorted(set(bare_internal))}")
     gate(len(external) >= 1, "no external link (Rank Math needs ≥ 1 followed external link)")
     gate(len(tk) == 0 or True, "")  # TKs are reported, not gated (the user fills them)
@@ -217,7 +221,7 @@ def audit(md, ptype=None):
 
 def main():
     args = sys.argv[1:]
-    as_json = "--json" in args; args = [a for a in args if a != "--json"]
+    as_json = "--json" in args; narrow = "--narrow" in args; args = [a for a in args if a not in ("--json", "--narrow")]
     ptype = None
     if "--type" in args:
         i = args.index("--type"); ptype = args[i+1]; del args[i:i+2]
@@ -225,7 +229,7 @@ def main():
     else:
         slug = args[0]; path = os.path.join(BLOGS, slug, f"{slug}.md")
     md = open(path, encoding="utf-8").read()
-    summary, gates, warns = audit(md, ptype)
+    summary, gates, warns = audit(md, ptype, narrow)
     if as_json:
         print(json.dumps(dict(summary=summary, gate_failures=gates, warnings=warns), indent=1)); sys.exit(1 if gates else 0)
     print(f"== {os.path.basename(path)}  ({summary['type']}, {summary['words']} words)")

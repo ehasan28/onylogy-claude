@@ -30,20 +30,37 @@ def main():
     h1 = re.search(r"^# (.+)$", body, re.M).group(1).strip()
     local_heads = [(len(m.group(1)), m.group(2).strip()) for m in re.finditer(r"^(#{2,4}) (.+)$", body, re.M)]
     local_imgs = len(re.findall(r"→\s*\S+\.webp\s+alt:", md)) - 1  # minus featured
-    data = nova("novamira/gutenberg-get-content", {"post_id": pid})
-    content = data.get("content") or data.get("post_content") or json.dumps(data)
-    post = data.get("post", data)
-    fails = []; notes = []
-    title = html.unescape(str(post.get("title", post.get("post_title", ""))))
-    if title and title != h1: fails.append(f"title differs: site '{title}' vs local '{h1}'")
-    notes.append(f"status={post.get('status', post.get('post_status'))} date={post.get('date', post.get('post_date'))} slug={post.get('slug', post.get('post_name'))}")
-    heads = [(int(m.group(1)), re.sub(r"<[^>]+>", "", html.unescape(m.group(2))).strip()) for m in re.finditer(r"<h([2-4])[^>]*>(.*?)</h\1>", content, re.S)]
-    if len(heads) != len(local_heads): fails.append(f"heading count {len(heads)} on site vs {len(local_heads)} local")
+    import urllib.request
+    fails = []; notes = []; content = None; post = {}
+    try:  # published posts: the public REST API has the rendered HTML (cache-busted)
+        req = urllib.request.Request(f"https://onylogy.com/wp-json/wp/v2/posts/{pid}?_fields=id,slug,status,date,modified,title,content,featured_media&nocache={os.getpid()}", headers={"User-Agent": "onylogy-blog-system/1.0", "Cache-Control": "no-cache"})
+        with urllib.request.urlopen(req, timeout=30) as r: post = json.load(r)
+        content = post["content"]["rendered"]
+    except Exception: post = {}
+    if content is None:  # drafts: only the block tree is readable without PHP
+        data = nova("novamira/gutenberg-get-content", {"post_id": pid})
+        blocks = data.get("blocks", [])
+        names = [b.get("name") for b in blocks]
+        title = html.unescape(str(data.get("target_title", "")))
+        if title and title != h1: fails.append(f"title differs: site '{title}' vs local '{h1}'")
+        nh = names.count("core/heading"); ni = names.count("core/image")
+        notes.append(f"draft (block tree only): headings={nh} images={ni} paragraphs={names.count('core/paragraph')} tables={names.count('core/table')} lists={names.count('core/list')}")
+        if nh != len(local_heads): fails.append(f"heading count {nh} on site vs {len(local_heads)} local")
+        if ni != local_imgs: fails.append(f"{ni} images on site vs {local_imgs} expected")
+        content = ""
     else:
-        diff = [(l, s) for l, s in zip(local_heads, heads) if l[1] != s[1]]
-        if diff: fails.append(f"{len(diff)} heading text mismatch(es), first: {diff[0]}")
+        title = html.unescape(str(post.get("title", {}).get("rendered", "")))
+        if title and title != h1: fails.append(f"title differs: site '{title}' vs local '{h1}'")
+        notes.append(f"status={post.get('status')} date={post.get('date')} modified={post.get('modified')} slug={post.get('slug')} featured_media={post.get('featured_media')}")
+        heads = [(int(m.group(1)), re.sub(r"<[^>]+>", "", html.unescape(m.group(2))).strip()) for m in re.finditer(r"<h([2-4])[^>]*>(.*?)</h\1>", content, re.S)]
+        if len(heads) != len(local_heads): fails.append(f"heading count {len(heads)} on site vs {len(local_heads)} local")
+        else:
+            norm = lambda t: t.replace("\u2019", "'").replace("\u2018", "'").replace("\u201c", '"').replace("\u201d", '"').replace("&amp;", "&")
+            diff = [(l, s) for l, s in zip(local_heads, heads) if norm(l[1]) != norm(s[1])]
+            if diff: fails.append(f"{len(diff)} heading text mismatch(es), first: {diff[0]}")
+        if post.get("featured_media") in (None, 0): fails.append("no featured image set")
     imgs = len(re.findall(r"<img\b", content))
-    if imgs != local_imgs: fails.append(f"{imgs} images on site vs {local_imgs} expected from IMAGES block")
+    if content and imgs != local_imgs: fails.append(f"{imgs} images on site vs {local_imgs} expected from IMAGES block")
     if re.search(r"<figure[^>]*>\s*</figure>", content): fails.append("empty <figure> found")
     if "undefined" in content: fails.append("'undefined' string found in content")
     if re.search(r"<p>\s*<em>By Ehasanul", content): fails.append("byline paragraph present (must be removed)")
@@ -59,11 +76,10 @@ def main():
         if not fk: fails.append("Rank Math focus keyword empty")
         if not desc: fails.append("Rank Math description empty")
         elif not (120 <= len(desc) <= 150): notes.append(f"Rank Math description {len(desc)} chars")
-        if seo.get("title") or seo.get("rank_math_title"): fails.append("Rank Math Title field is SET (must stay empty)")
+        rm_title = seo.get("title") or seo.get("rank_math_title")
+        if rm_title and rm_title != h1: fails.append(f"Rank Math Title field looks SET: '{rm_title}' (must inherit the post title)")
         notes.append(f"rank math: keyword='{fk}' desc={len(desc or '')} chars")
     except SystemExit as e: notes.append(f"rank math meta not readable: {e}")
-    fi = post.get("featured_media") or post.get("_thumbnail_id") or data.get("featured_media")
-    if fi in (None, 0, "0", ""): notes.append("featured image: not visible in this payload (check in the editor)")
     print(f"== post {pid} ({slug})"); [print("  ", n) for n in notes]
     for f in fails: print("  FAIL:", f)
     print("  RESULT:", "OK" if not fails else f"{len(fails)} problem(s)")

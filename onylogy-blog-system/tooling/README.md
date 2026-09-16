@@ -17,6 +17,9 @@ All scripts assume the workspace at `~/Claude Playground/Onylogy Studio Website/
 | `media-ids.py SLUG` | 8a | after the Media Library upload, reads back attachment IDs/URLs for every `.webp` in the post folder |
 | `make-draft-php.py SLUG --date YYYY-MM-DD` | 8b | builds the one `wp_insert_post` snippet (draft, date pinned). **Ask before running.** |
 | `md2blocks.py SLUG --post-id ID --media media-ids.json --out spec.json` | 8c | `.md` → core Gutenberg blocks for `novamira/gutenberg-add-pending-change` |
+| `live-media-ids.py POST_ID` | repair | media map from a post already on the site (reuse attachments when replacing a body) |
+| `splice-body.py SLUG NEW_BODY.md --type T --note "…"` | repair | replace only the body of a local draft, keep META/JSON-LD/IMAGES, auto-tag image placements |
+| `repair-upload.sh SLUG POST_ID [--narrow]` | repair | gate → live media map → md2blocks → replace-content batch → poll → verify, in one command |
 | `verify-post.py SLUG --post-id ID` | 8e | read-only verification of the uploaded post (headings, images, links, byline, dashes, Rank Math meta) |
 
 ## Novamira CLI one-liners (profile `onylogy.com`; `export PATH="$HOME/.npm-global/bin:$PATH"`)
@@ -47,6 +50,9 @@ open in the Chrome tab until `gutenberg-list-pending-batches` reports `finalized
   ^(.*)` / `RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]`, then LiteSpeed purge. Not needed for this pipeline (CLI is used).
 - Uploaded images show up as `name-1.webp`: the filename already existed. Either reuse the old ID
   (`permalinks.py --media`) or rename locally and re-upload.
+- Batch `failed` with `invalid_json` ("The response is not a valid JSON response"): transient; `gutenberg-delete-pending-batch` and re-add.
+- Batch `failed` with "A previous Block Editor Queue tab stopped before renewing its lease": Chrome throttled the finalize tab;
+  reload `admin.php?page=novamira-gutenberg-finalize` and the batch completes on its own (seen 2026-09-16).
 - Batch stuck at `running`: the finalize tab isn't open or was reloaded; open it and wait; check with
   `gutenberg-list-pending-batches`, then `gutenberg-delete-pending-batch` and re-add if it is `failed`.
 - `shot.py` returns a blank/cookie-wall image: use `pwshot.js` with a dismiss selector; GoDaddy needs
