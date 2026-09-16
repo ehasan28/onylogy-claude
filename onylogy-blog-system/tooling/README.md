@@ -36,10 +36,15 @@ open in the Chrome tab until `gutenberg-list-pending-batches` reports `finalized
 
 ## Troubleshooting
 
-- `doctor` says `oauth.resource_metadata … server_unsupported`, "OAuth resource does not match this WordPress site"
-  (seen 2026-09-14: the site advertised `wp-json/mcp/mcp-oauth-server`, the CLI expects `mcp/novamira-oauth`): the
-  Novamira plugin on the site was updated or another MCP/OAuth plugin is active. Stop, tell the user, do not
-  work around it with other endpoints. Fix is on the site (plugin settings) or `novamira update` + `novamira auth login`.
+- `doctor` says `oauth.resource_metadata … server_unsupported`, "OAuth resource does not match this WordPress site":
+  **first check that the Novamira plugin is ACTIVE** (wp-admin → Plugins). WordPress 7.1 core ships its own MCP server
+  (`/wp-json/mcp/mcp-adapter-default-server`, `mcp-oauth-server`); when Novamira is deactivated, core's server owns the
+  site-wide discovery document and the CLI refuses. Reactivate Novamira, purge LiteSpeed, re-run `doctor`. (Seen 2026-09-14/16.)
+- Device-code login reports "The OAuth request was denied" within ~2.5 minutes: the plugin rate-limits its token endpoint
+  (~30 polls, HTTP 429 `temporarily_unavailable`). Have the user on the device page BEFORE starting, approve within 2 minutes.
+- Application-password MCP route (`.mcp.json`) returns `rest_not_logged_in` even for a wrong username: WordPress is not
+  receiving Basic-auth credentials (OAuth bearer still works). Fix on the host: `.htaccess` `RewriteCond %{HTTP:Authorization}
+  ^(.*)` / `RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]`, then LiteSpeed purge. Not needed for this pipeline (CLI is used).
 - Uploaded images show up as `name-1.webp`: the filename already existed. Either reuse the old ID
   (`permalinks.py --media`) or rename locally and re-upload.
 - Batch stuck at `running`: the finalize tab isn't open or was reloaded; open it and wait; check with
